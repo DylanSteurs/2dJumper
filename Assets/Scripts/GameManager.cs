@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Singleton part
+    // Singleton 
     public static GameManager instance { get; private set; }
 
     private void Awake()
@@ -17,12 +17,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
 
-        // limit framerate
-        QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        QualitySettings.vSyncCount = 0;  
         Application.targetFrameRate = 30;
     }
 
-    // gameManager part
+    // gameManager
     private Player player;
     [SerializeField] private GameObject spawnPoint;
     [SerializeField] private GameObject playerPrefab;
@@ -38,16 +37,26 @@ public class GameManager : MonoBehaviour
 
     private void InstantiatePlayer()
     {
-        player = Instantiate(playerPrefab).GetComponent<Player>();
-        player.transform.position = spawnPoint.transform.position;
-        FindObjectOfType<CameraFollower>().FocusOn(player);
+        if (player != true)
+        {
+            player = Instantiate(playerPrefab).GetComponent<Player>();
+            player.transform.position = spawnPoint.transform.position;
+            FindObjectOfType<CameraFollower>().FocusOn(player);
+        }
+        else
+        {
+            player = Instantiate(playerPrefab).GetComponent<Player>();
+            player.transform.position = spawnPoint.transform.position;
+            FindObjectOfType<CameraFollower>().FocusOn(player);
+        }
+       
     }
 
     public void StartNewGame()
     {
         if (spawnPoint == null)
         {
-            Debug.Log("GameManager has no spawn point");
+            Debug.Log("Geen spawnpoint");
         }
         else
         {
