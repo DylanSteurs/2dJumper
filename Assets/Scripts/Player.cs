@@ -36,19 +36,16 @@ public class Player : MonoBehaviour
 
         if (math.abs(dirX) > 0.1f && !walking)
         {
-            anim.SetTrigger("MoveTrigger");
             walking = true;
         }
         else if (math.abs(dirX) < 0.1f && walking)
         {
-            anim.SetTrigger("IdleTrigger");
             walking = false;
         }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            anim.SetTrigger("JumpTrigger");
         }
     }
 
