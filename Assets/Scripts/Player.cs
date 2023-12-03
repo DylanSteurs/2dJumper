@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
             Health = 0;
         }
     }
-
+    
     public void Kill()
     {
         Health = 0;

@@ -20,12 +20,16 @@ public class ScoreManager : MonoBehaviour
 
     // ScoreManager part
     public int Lives = 0;
-
+    public int Score = 0;
     public void StartNewGame()
     {
         Lives = 3;
+        Score = 0;
     }
-
+    public void AddScore()
+    {
+        Score++;
+    }
     public void RemoveLife()
     {
         Lives--;
