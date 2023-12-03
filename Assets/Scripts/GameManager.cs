@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Singleton 
@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
         if (ScoreManager.instance.Lives > 0)
         {
             InstantiatePlayer();
+        }
+        if (ScoreManager.instance.Lives < 0)
+        {
+            SceneManager.LoadScene("PGScene");
         }
     }
 }

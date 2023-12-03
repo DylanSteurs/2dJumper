@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ScoreManager : MonoBehaviour
 {
-    // Singleton part
+    //Singleton
     public static ScoreManager instance { get; private set; }
 
     private void Awake()
@@ -18,9 +20,14 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    // ScoreManager part
+    //Stats
+    public Text scoreText;
     public int Lives = 0;
     public int Score = 0;
+    void Start()
+    {
+        scoreText.text = Score.ToString() + " POINTS";
+    }
     public void StartNewGame()
     {
         Lives = 3;
